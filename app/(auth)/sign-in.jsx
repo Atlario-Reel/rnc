@@ -8,6 +8,7 @@ import FormField from '../../components/FormField'
 import CustomButton from '../../components/CustomButton'
 import { useState } from 'react';
 import { signIn } from '../../lib/appwrite';
+import { router } from 'expo-router';
 
 const SignIn = () => {
 const [form, setForm] = useState(
@@ -33,7 +34,7 @@ const submit = async () => {
     router.replace('/home')
   } catch(error) {
     Alert.alert('Error', error.message)
-  } finally {
+  } finally { 
     setisSubmitting(false)
   }
 }
