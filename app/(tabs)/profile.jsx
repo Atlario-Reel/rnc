@@ -17,9 +17,9 @@ const Profile = () => {
   const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
   const logout = async () => {
     await signOut();
+    router.replace('/sign-in')
     setUser(null)
     setisLoggedIn(false)
-    router.replace('/sign-in')
   }
 
 
