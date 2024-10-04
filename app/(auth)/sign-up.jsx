@@ -10,8 +10,10 @@ import { useState } from 'react';
 import { createUser } from '../../lib/appwrite';
 import { Alert } from 'react-native';
 import { router } from 'expo-router';
+import { useGlobalContext } from '../../context/GlobalProvider';
 
 const SignUp = () => {
+  const {setUser, setisLoggedIn} = useGlobalContext();
 const [form, setForm] = useState(
    {email: '',
     password: '',
@@ -29,7 +31,9 @@ const submit = async () => {
   
   try {
     const result = await createUser(form.email, form.password, form.username)
-    // set it to global state..
+  
+    setUser(result);
+    setisLoggedIn(true);
     router.replace('/home')
   } catch(error) {
     Alert.alert('Error', error.message)
