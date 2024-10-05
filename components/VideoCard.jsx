@@ -3,9 +3,10 @@ import React from 'react'
 import { icons } from '../constants'
 import { useState } from 'react'
 import { Video, ResizeMode } from 'expo-av'
+import BookMarkButton from '../components/BookMarkButton'
 
-const VideoCard = ({ video: { title, thumbnail, video, creator: { username, avatar }}}) => {
-    const [play, setPlay] = useState(false)
+const VideoCard = ({ video: { $id, title, thumbnail, video, bookmarkers, creator: { username, avatar }}}) => {
+const [play, setPlay] = useState(false)
 
   return (
     <View className="flex-col items-center px-4 mb-14">
@@ -25,7 +26,10 @@ const VideoCard = ({ video: { title, thumbnail, video, creator: { username, avat
                 </View>
             </View>
             <View className="pt-2">
-                <Image source={icons.menu} className="w-5 h-5" resizeMode="contain" />
+                <BookMarkButton
+                    bookmarkedBy={bookmarkers}
+                    videoId={$id}
+                />
             </View>
         </View>
         {play ? (
