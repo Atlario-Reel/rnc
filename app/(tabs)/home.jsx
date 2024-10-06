@@ -30,10 +30,13 @@ const Home = () => {
 
 
   return (
-    <SafeAreaView className="bg-primary h-full">
+ 
+    <SafeAreaView className="bg-primary h-full flex-1 flex-column"
+       edges={['right', 'left', 'top']} 
+      >
+         
       <FlatList 
        data={posts}
-       
         keyExtractor={(item) => item.$id}
         renderItem={( {item} ) => (
           <VideoCard video={item}
@@ -74,9 +77,9 @@ const Home = () => {
           onRefresh={onRefresh}
         />}
       />
-    <StatusBar backgroundColor="#161622" style="light"/>
+ <StatusBar backgroundColor="#161622" style="light"/>
     </SafeAreaView>
-     
+      
   )
 }
 

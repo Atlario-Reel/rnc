@@ -22,7 +22,7 @@ const TabIcon = ({ icon, color, name, focused }) => {
 
 const TabsLayout = () => {
   return (
-    <>
+
     <Tabs
      screenOptions={{
       tabBarShowLabel: false,
@@ -32,7 +32,9 @@ const TabsLayout = () => {
         backgroundColor: '#161622',
         borderTopWidth: 1,
         borderTopColor: '#232533',
-        height: 84,
+        height: 94,
+        paddingTop: 10,
+        marginTop: 0,
       }
      }}
     >
@@ -97,7 +99,7 @@ const TabsLayout = () => {
         }}
       />
     </Tabs>
-    </>
+  
   )
 }
 

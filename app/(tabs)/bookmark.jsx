@@ -15,7 +15,7 @@ import { showBookmarkedPosts } from '../../lib/appwrite'
 
 const Bookmark = () => {
   const { user } = useGlobalContext();
-  const query = "";
+  const { query } = useLocalSearchParams();
   const { data: posts, refetch } = useAppwrite(() => showBookmarkedPosts(query, user.$id));
 
   useEffect(() => {
@@ -23,16 +23,16 @@ const Bookmark = () => {
   }, [query])
 
   const [refreshing, setRefreshing] = useState(false)
+  
   const onRefresh = async () => {
     setRefreshing(true);
     await refetch();
     setRefreshing(false);
   }
 
-
-
   return (
-    <SafeAreaView className="bg-primary h-full">
+    <SafeAreaView className="bg-primary h-full"
+    edges={['right', 'left', 'top']} >
       <FlatList 
         data={posts}
         keyExtractor={(item) => item.$id}
@@ -47,7 +47,8 @@ const Bookmark = () => {
                 <Text className="text-2xl font-psemibold text-white">Saved Videos</Text>
 
                 <View className="mt-6 mb-8">
-                <SearchBookmarkInput initalQuery=''
+                <SearchBookmarkInput  
+                  initalQuery={query}
                   placeholder='Search your saved videos'/>
                 </View>
 

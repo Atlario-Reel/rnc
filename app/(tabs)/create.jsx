@@ -69,8 +69,9 @@ const Create = () => {
   return (
     
 
-    <SafeAreaView className="bg-primary h-full  ">
-      <ScrollView className="px-4 my-6">
+    <SafeAreaView className="bg-primary h-full "
+    edges={['right', 'left', 'top']} >
+      <ScrollView className="px-4 py-6 h-full">
         <Text className="text-2xl text-white font-psemibold">Upload Video</Text>
         <FormField 
           title="Video Title"
@@ -142,7 +143,7 @@ const Create = () => {
         <CustomButton 
           title="Submit & Publish"
           handlePress={submit}
-          containerStyles="mt-7"
+          containerStyles="mt-7 mb-12"
           isLoading={uploading}
         />
       </ScrollView>
